@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://u7p8h300oxn0"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_nd61c"]
+
+[sub_resource type="Curve2D" id="Curve2D_pbxd0"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_nd61c")
+
+[node name="TargetPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_pbxd0")
+
+[node name="TargetTimer" type="Timer" parent="."]
