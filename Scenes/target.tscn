@@ -16,3 +16,10 @@ texture = ExtResource("2_iu07a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1hc53")
+
+[node name="TimeToLive" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="timeout" from="TimeToLive" to="." method="_on_time_to_live_timeout"]
