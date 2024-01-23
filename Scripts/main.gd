@@ -1,14 +1,17 @@
 extends Node2D
 
 # The number of targets to spawn
-@export var max_target_count = 50
+@export var max_target_count = 10
 # Minimum distance targets have to be apart
 @export var min_dist = 200
 
 # The path to the target scene
 const TARGET_SCENE = "res://Scenes/target.tscn"
+const END_SCENE = "res://Scenes/end_menu.tscn"
 
 @onready var timer: Timer = $TargetTimer
+# Load the end scene
+@onready var end_scene = load(END_SCENE)
 # Load the target scene
 @onready var target_scene = load(TARGET_SCENE)
 # Get the screen size
@@ -83,5 +86,7 @@ func getSpawnLoc(radius) -> Vector2:
 	return Vector2(-1,-1)
 
 func end_game():
-	print("Accuracy: " + str(accuracy)  + "%")
-	get_tree().reload_current_scene()
+	var end = end_scene.instantiate()
+	add_child(end)
+	end.Accuracy.text = "Accuracy: " + str(accuracy)  + "%"
+	
