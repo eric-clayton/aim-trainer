@@ -7,11 +7,10 @@ extends Node2D
 
 # The path to the target scene
 const TARGET_SCENE = "res://Scenes/target.tscn"
-const END_SCENE = "res://Scenes/end_menu.tscn"
 
 @onready var timer: Timer = $TargetTimer
 # Load the end scene
-@onready var end_scene = load(END_SCENE)
+@onready var end_scene = $EndMenu
 # Load the target scene
 @onready var target_scene = load(TARGET_SCENE)
 # Get the screen size
@@ -29,6 +28,7 @@ const END_SCENE = "res://Scenes/end_menu.tscn"
 func _ready():
 	timer.timeout.connect(spawn_target)
 	timer.start()
+	end_scene.visible = false
 	
 func _on_target_hide(target):
 	active_target_locs.pop_front()
@@ -86,7 +86,6 @@ func getSpawnLoc(radius) -> Vector2:
 	return Vector2(-1,-1)
 
 func end_game():
-	var end = end_scene.instantiate()
-	add_child(end)
-	end.Accuracy.text = "Accuracy: " + str(accuracy)  + "%"
+	end_scene.visible = true
+	end_scene.Accuracy.text = "Accuracy: " + str(accuracy)  + "%"
 	
