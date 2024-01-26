@@ -37,14 +37,9 @@ layout_mode = 2
 layout_mode = 2
 text = "Play Again?"
 
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Back to main menu" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Options"
-
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Quit"
+text = "Back to Main Menu"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play Again" to="." method="_on_play_again_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back to main menu" to="." method="_on_back_to_main_menu_pressed"]
