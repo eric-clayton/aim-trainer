@@ -1,7 +1,9 @@
 extends Node2D
 
 # The number of targets to spawn
-@export var max_target_count = 10
+@onready var max_target_count = Settings.max_target_count
+@onready var spawn_time = Settings.spawn_time
+@onready var time_time_to_live = Settings.time_time_to_live
 # Minimum distance targets have to be apart
 @export var min_dist = 200
 
@@ -26,6 +28,7 @@ const TARGET_SCENE = "res://Scenes/target.tscn"
 @onready var num_hit = 0
 @onready var final_target = null
 func _ready():
+	timer.wait_time = spawn_time
 	timer.timeout.connect(spawn_target)
 	timer.start()
 	end_scene.visible = false
@@ -48,6 +51,7 @@ func spawn_target():
 	target.visible = false;
 	# Add it to the scene
 	add_child(target)
+	target.timetolive.wait_time = time_time_to_live
 	# Target radius to 
 	var radius = target.collision_shape_2d.shape.radius
 	# Attempt to get a random location that is not too close to another target

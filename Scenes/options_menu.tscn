@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdahcip3804en"]
+[gd_scene load_steps=3 format=3 uid="uid://cdahcip3804en"]
 
 [ext_resource type="Script" path="res://Scripts/options_menu.gd" id="1_o2rbd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t1xh3"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -10,30 +12,96 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_o2rbd")
+metadata/_edit_vertical_guides_ = [429.0]
+metadata/_edit_horizontal_guides_ = [338.0]
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -78.5
-offset_top = -33.0
-offset_right = 78.5
-offset_bottom = 33.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+[node name="Targets Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-placeholder_text = "Targets"
+text = "Targets"
+
+[node name="Targets" type="SpinBox" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+editable = false
+
+[node name="Next Target Timer Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Next Target Timer"
+
+[node name="Next Target Timer" type="SpinBox" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+step = 0.1
+editable = false
+
+[node name="Target Lifetime Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Target Lifetime"
+
+[node name="Target Lifetime" type="SpinBox" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+step = 0.1
+editable = false
+
+[node name="HSlider" type="HSlider" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Change difficulty settings"
+max_value = 4.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 34
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Easy"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Normal"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Hard"
+
+[node name="Label4" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Legendary"
+
+[node name="Label5" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Custom"
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 19
+theme_override_styles/separator = SubResource("StyleBoxEmpty_t1xh3")
 
 [node name="Back" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Back to Main Menu"
 
+[connection signal="ready" from="CenterContainer/VBoxContainer/Targets" to="." method="_on_targets_ready"]
+[connection signal="ready" from="CenterContainer/VBoxContainer/Next Target Timer" to="." method="_on_next_target_timer_ready"]
+[connection signal="ready" from="CenterContainer/VBoxContainer/Target Lifetime" to="." method="_on_target_lifetime_ready"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

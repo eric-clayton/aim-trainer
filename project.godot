@@ -14,6 +14,10 @@ config/name="Aim-trainer"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 
+[autoload]
+
+Settings="*res://Scripts/settings.gd"
+
 [input]
 
 mouse_click={
