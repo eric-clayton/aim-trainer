@@ -1,6 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdahcip3804en"]
+[gd_scene load_steps=10 format=3 uid="uid://cdahcip3804en"]
 
 [ext_resource type="Script" path="res://Scripts/options_menu.gd" id="1_o2rbd"]
+[ext_resource type="FontFile" uid="uid://ct3wj5vs06mda" path="res://Theme/Pixelme.ttf" id="2_e56bj"]
+[ext_resource type="Theme" uid="uid://d3kss05n3127e" path="res://Theme/PixelFont.tres" id="3_jf4kh"]
+[ext_resource type="Theme" uid="uid://c3jr6jsh78yvx" path="res://Theme/ButtonTheme.tres" id="4_j1nlp"]
+[ext_resource type="StyleBox" uid="uid://dv072j01mh8os" path="res://Theme/HoverTheme.tres" id="5_pxe1e"]
+[ext_resource type="AudioStream" uid="uid://djxhv6cspn2ju" path="res://Audio/ButtonHover.wav" id="6_6o8wf"]
+[ext_resource type="PackedScene" uid="uid://lo8owk2r2olx" path="res://Scenes/volume_slider.tscn" id="8_i8e7m"]
+
+[sub_resource type="Theme" id="Theme_0gjmr"]
+default_font = ExtResource("2_e56bj")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t1xh3"]
 
@@ -29,27 +38,36 @@ layout_mode = 2
 
 [node name="Targets Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_0gjmr")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Targets"
 
 [node name="Targets" type="SpinBox" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_jf4kh")
 editable = false
 
 [node name="Next Target Timer Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_jf4kh")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Next Target Timer"
 
 [node name="Next Target Timer" type="SpinBox" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_jf4kh")
 step = 0.1
 editable = false
 
 [node name="Target Lifetime Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_jf4kh")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Target Lifetime"
 
 [node name="Target Lifetime" type="SpinBox" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_jf4kh")
 step = 0.1
 editable = false
 
@@ -57,6 +75,7 @@ editable = false
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 tooltip_text = "Change difficulty settings"
+theme = ExtResource("3_jf4kh")
 max_value = 4.0
 rounded = true
 tick_count = 5
@@ -160,10 +179,36 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_t1xh3")
 
 [node name="Back" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_j1nlp")
+theme_override_styles/hover = ExtResource("5_pxe1e")
 text = "Back to Main Menu"
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_6o8wf")
+
+[node name="volume_slider" parent="." instance=ExtResource("8_i8e7m")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.042
+anchor_bottom = 0.049
+offset_left = 384.0
+offset_top = 504.0
+offset_right = 719.616
+offset_bottom = 504.248
+bus_name = "Master"
+
+[node name="Label" type="Label" parent="volume_slider"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -16.0
+offset_right = 126.0
+offset_bottom = 7.0
+theme = ExtResource("3_jf4kh")
+text = "Master Volume"
 
 [connection signal="ready" from="CenterContainer/VBoxContainer/Targets" to="." method="_on_targets_ready"]
 [connection signal="ready" from="CenterContainer/VBoxContainer/Next Target Timer" to="." method="_on_next_target_timer_ready"]
 [connection signal="ready" from="CenterContainer/VBoxContainer/Target Lifetime" to="." method="_on_target_lifetime_ready"]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/Back" to="." method="_on_back_mouse_entered"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

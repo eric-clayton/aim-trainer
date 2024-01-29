@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://c3jr6jsh78yvx"]
+
+[ext_resource type="FontFile" uid="uid://ct3wj5vs06mda" path="res://Theme/Pixelme.ttf" id="1_thbbn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkx4c"]
+bg_color = Color(1, 0.196078, 0.145098, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 5
+
+[resource]
+default_font = ExtResource("1_thbbn")
+Button/styles/normal = SubResource("StyleBoxFlat_bkx4c")

@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2s1uam1a4gqg"]
+[gd_scene load_steps=5 format=3 uid="uid://d2s1uam1a4gqg"]
 
 [ext_resource type="Script" path="res://Scripts/end_menu.gd" id="1_rullw"]
+[ext_resource type="Theme" uid="uid://c3jr6jsh78yvx" path="res://Theme/ButtonTheme.tres" id="2_ywqux"]
+[ext_resource type="StyleBox" uid="uid://dv072j01mh8os" path="res://Theme/HoverTheme.tres" id="3_mn18t"]
+[ext_resource type="AudioStream" uid="uid://djxhv6cspn2ju" path="res://Audio/ButtonHover.wav" id="4_6qncv"]
 
 [node name="EndMenu" type="Control"]
 layout_mode = 3
@@ -29,17 +32,27 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme = ExtResource("2_ywqux")
+theme_override_constants/separation = 16
 
 [node name="Accuracy" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="Play Again" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/hover = ExtResource("3_mn18t")
 text = "Play Again?"
 
 [node name="Back to main menu" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/hover = ExtResource("3_mn18t")
 text = "Back to Main Menu"
 
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6qncv")
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Play Again" to="." method="_on_play_again_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play Again" to="." method="_on_play_again_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Back to main menu" to="." method="_on_back_to_main_menu_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Back to main menu" to="." method="_on_back_to_main_menu_pressed"]

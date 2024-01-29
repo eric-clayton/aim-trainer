@@ -29,3 +29,8 @@ func set_spinbox_editable(editable):
 	targets.editable = editable
 	next_target_timer.editable = editable
 	target_lifetime.editable = editable
+
+
+func _on_back_mouse_entered():
+	$ButtonSound.play()
+	pass # Replace with function body.

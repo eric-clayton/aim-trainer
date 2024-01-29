@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://n4y36tq31vri"]
+
+[ext_resource type="Texture2D" uid="uid://37665rsp2an7" path="res://Sprites/Sprite-Background.png" id="1_am48l"]
+
+[node name="TextureRect" type="TextureRect"]
+texture_filter = 1
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_am48l")
