@@ -27,6 +27,8 @@ const TARGET_SCENE = "res://Scenes/target.tscn"
 @onready var accuracy = 0.0
 @onready var num_hit = 0
 @onready var final_target = null
+@onready var target_hit = $TargetHit
+@onready var target_miss = $TargetMiss
 func _ready():
 	timer.wait_time = spawn_time
 	timer.timeout.connect(spawn_target)
@@ -91,5 +93,15 @@ func getSpawnLoc(radius) -> Vector2:
 
 func end_game():
 	end_scene.visible = true
-	end_scene.Accuracy.text = "Accuracy: " + str(accuracy)  + "%"
+	end_scene.Accuracy.text = "Accuracy: " + str(snapped(accuracy, 1.0))  + "%"
+	
+func _unhandled_input(event):
+	if event is InputEventMouseButton:
+		if event.pressed:
+			for target in targets:
+				if target.visible and target.mouse_hover:
+					target_hit.play()
+					return
+			target_miss.play()	
+
 	
