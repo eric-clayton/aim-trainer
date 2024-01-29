@@ -25,4 +25,6 @@ wait_time = 5.0
 
 [connection signal="draw" from="." to="." method="_on_draw"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="TimeToLive" to="." method="_on_time_to_live_timeout"]
