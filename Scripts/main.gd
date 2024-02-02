@@ -12,7 +12,7 @@ const TARGET_SCENE = "res://Scenes/target.tscn"
 
 @onready var timer: Timer = $TargetTimer
 # Load the end scene
-@onready var end_scene = $EndMenu
+@onready var end_scene = $CanvasLayer/EndMenu
 # Load the target scene
 @onready var target_scene = load(TARGET_SCENE)
 # Get the screen size
@@ -26,9 +26,11 @@ const TARGET_SCENE = "res://Scenes/target.tscn"
 @onready var spawned_targets = 0
 @onready var accuracy = 0.0
 @onready var num_hit = 0
+@onready var clicks = 0
 @onready var final_target = null
 @onready var target_hit = $TargetHit
 @onready var target_miss = $TargetMiss
+@onready var end = false;
 func _ready():
 	timer.wait_time = spawn_time
 	timer.timeout.connect(spawn_target)
@@ -40,7 +42,6 @@ func _on_target_hide(target):
 	target_locs.append(target)
 	if target.hit:
 		num_hit += 1
-	accuracy = 100 * float(num_hit) / float(spawned_targets)
 	# Check if there are no more targets left
 	if spawned_targets == max_target_count and target == final_target:
 		# End the game
@@ -92,12 +93,18 @@ func getSpawnLoc(radius) -> Vector2:
 	return Vector2(-1,-1)
 
 func end_game():
+	end = true
 	end_scene.visible = true
-	end_scene.Accuracy.text = "Accuracy: " + str(snapped(accuracy, 1.0))  + "%"
+	end_scene.targets_hit.text = "Targets hit: " + str(num_hit) + "/"  + str(spawned_targets)
+	accuracy = (100*num_hit) / maxi(1, clicks)
+	end_scene.accuracy.text = "Accuracy: " + str(accuracy)  + "%"
 	
 func _unhandled_input(event):
+	if (end == true):
+		return
 	if event is InputEventMouseButton:
 		if event.pressed:
+			clicks += 1
 			for target in targets:
 				if target.visible and target.mouse_hover:
 					target_hit.play()
@@ -105,3 +112,7 @@ func _unhandled_input(event):
 			target_miss.play()	
 
 	
+
+
+func _on_control_resized():
+	pass # Replace with function body.

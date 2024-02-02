@@ -23,8 +23,11 @@ func _on_h_slider_value_changed(value):
 	targets.value = Settings.max_target_count
 	next_target_timer.value = Settings.spawn_time
 	target_lifetime.value = Settings.time_time_to_live
-	if(Settings.difficulty == Settings.Difficulties.Custom):
+	
+	if Settings.difficulty == Settings.Difficulties.Custom:
 		set_spinbox_editable(true)
+	else:
+		set_spinbox_editable(false)
 func set_spinbox_editable(editable):
 	targets.editable = editable
 	next_target_timer.editable = editable

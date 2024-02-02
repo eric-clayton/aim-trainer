@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdahcip3804en"]
+[gd_scene load_steps=11 format=3 uid="uid://cdahcip3804en"]
 
 [ext_resource type="Script" path="res://Scripts/options_menu.gd" id="1_o2rbd"]
 [ext_resource type="FontFile" uid="uid://ct3wj5vs06mda" path="res://Theme/Pixelme.ttf" id="2_e56bj"]
@@ -10,6 +10,8 @@
 
 [sub_resource type="Theme" id="Theme_0gjmr"]
 default_font = ExtResource("2_e56bj")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m5v0e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t1xh3"]
 
@@ -35,6 +37,8 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 custom_minimum_size = Vector2(380, 0)
 layout_mode = 2
+theme = ExtResource("3_jf4kh")
+theme_override_constants/separation = 6
 
 [node name="Targets Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -45,6 +49,8 @@ text = "Targets"
 [node name="Targets" type="SpinBox" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_jf4kh")
+min_value = 1.0
+value = 1.0
 editable = false
 
 [node name="Next Target Timer Label" type="Label" parent="CenterContainer/VBoxContainer"]
@@ -56,7 +62,9 @@ text = "Next Target Timer"
 [node name="Next Target Timer" type="SpinBox" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_jf4kh")
+min_value = 0.1
 step = 0.1
+value = 0.1
 editable = false
 
 [node name="Target Lifetime Label" type="Label" parent="CenterContainer/VBoxContainer"]
@@ -68,11 +76,19 @@ text = "Target Lifetime"
 [node name="Target Lifetime" type="SpinBox" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_jf4kh")
+min_value = 0.1
 step = 0.1
+value = 0.1
 editable = false
 
+[node name="Difficulty" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_0gjmr")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Dificulty
+"
+
 [node name="HSlider" type="HSlider" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 tooltip_text = "Change difficulty settings"
 theme = ExtResource("3_jf4kh")
@@ -81,96 +97,71 @@ rounded = true
 tick_count = 5
 ticks_on_borders = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/HSlider"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Control" type="Control" parent="CenterContainer/VBoxContainer/HSlider/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HSlider/HBoxContainer/Control"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_jf4kh")
 text = "Easy"
 
-[node name="Control2" type="Control" parent="CenterContainer/VBoxContainer/HSlider/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+theme_override_constants/separation = 54
+theme_override_styles/separator = SubResource("StyleBoxEmpty_m5v0e")
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HSlider/HBoxContainer/Control2"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 text = "Normal"
 horizontal_alignment = 1
 
-[node name="Control3" type="Control" parent="CenterContainer/VBoxContainer/HSlider/HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
+theme_override_constants/separation = 64
+theme_override_styles/separator = SubResource("StyleBoxEmpty_m5v0e")
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HSlider/HBoxContainer/Control3"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 text = "Hard"
 horizontal_alignment = 1
 
-[node name="Control4" type="Control" parent="CenterContainer/VBoxContainer/HSlider/HBoxContainer"]
+[node name="VSeparator3" type="VSeparator" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
+theme_override_constants/separation = 42
+theme_override_styles/separator = SubResource("StyleBoxEmpty_m5v0e")
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HSlider/HBoxContainer/Control4"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Label4" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 text = "Legendary"
 horizontal_alignment = 1
 
-[node name="Control5" type="Control" parent="CenterContainer/VBoxContainer/HSlider/HBoxContainer"]
+[node name="VSeparator4" type="VSeparator" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
+theme_override_constants/separation = 37
+theme_override_styles/separator = SubResource("StyleBoxEmpty_m5v0e")
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HSlider/HBoxContainer/Control5"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Label5" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 text = "Custom"
 horizontal_alignment = 2
+
+[node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 19
+theme_override_styles/separator = SubResource("StyleBoxEmpty_t1xh3")
+
+[node name="volume_slider" parent="CenterContainer/VBoxContainer" instance=ExtResource("8_i8e7m")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/volume_slider"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -16.0
+offset_right = 126.0
+offset_bottom = 7.0
+theme = ExtResource("3_jf4kh")
+text = "Master Volume"
 
 [node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -185,26 +176,6 @@ text = "Back to Main Menu"
 
 [node name="ButtonSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_6o8wf")
-
-[node name="volume_slider" parent="." instance=ExtResource("8_i8e7m")]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.042
-anchor_bottom = 0.049
-offset_left = 384.0
-offset_top = 504.0
-offset_right = 719.616
-offset_bottom = 504.248
-bus_name = "Master"
-
-[node name="Label" type="Label" parent="volume_slider"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = -16.0
-offset_right = 126.0
-offset_bottom = 7.0
-theme = ExtResource("3_jf4kh")
-text = "Master Volume"
 
 [connection signal="ready" from="CenterContainer/VBoxContainer/Targets" to="." method="_on_targets_ready"]
 [connection signal="ready" from="CenterContainer/VBoxContainer/Next Target Timer" to="." method="_on_next_target_timer_ready"]

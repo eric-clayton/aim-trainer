@@ -7,44 +7,40 @@
 
 [node name="EndMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rullw")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -50.5
-offset_right = 35.0
-offset_bottom = 50.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 theme = ExtResource("2_ywqux")
 theme_override_constants/separation = 16
 
-[node name="Accuracy" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="TargetsHit" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 
-[node name="Play Again" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Accuracy" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="Play Again" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/hover = ExtResource("3_mn18t")
 text = "Play Again?"
 
-[node name="Back to main menu" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Back to main menu" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/hover = ExtResource("3_mn18t")
 text = "Back to Main Menu"
@@ -52,7 +48,7 @@ text = "Back to Main Menu"
 [node name="ButtonSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_6qncv")
 
-[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Play Again" to="." method="_on_play_again_mouse_entered"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play Again" to="." method="_on_play_again_pressed"]
-[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Back to main menu" to="." method="_on_back_to_main_menu_mouse_entered"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Back to main menu" to="." method="_on_back_to_main_menu_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/Play Again" to="." method="_on_play_again_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Play Again" to="." method="_on_play_again_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/Back to main menu" to="." method="_on_back_to_main_menu_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Back to main menu" to="." method="_on_back_to_main_menu_pressed"]

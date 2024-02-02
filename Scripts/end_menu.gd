@@ -1,6 +1,7 @@
 extends Control
 
-@onready var Accuracy = $MarginContainer/VBoxContainer/Accuracy
+@onready var accuracy = $CenterContainer/VBoxContainer/Accuracy
+@onready var targets_hit = $CenterContainer/VBoxContainer/TargetsHit
 
 func _on_play_again_pressed():
 	get_tree().change_scene_to_file("res://Scenes/main.tscn")

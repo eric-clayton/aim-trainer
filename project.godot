@@ -20,6 +20,11 @@ Settings="*res://Scripts/settings.gd"
 Music="*res://Scenes/music.tscn"
 Background="*res://Scenes/background.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [input]
 
 mouse_click={
