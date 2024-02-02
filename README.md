@@ -1,2 +1,5 @@
 # aim-trainer
- simple 2d aim trainer in godot
+Simple 2d aim trainer in godot
+
+Demo
+-
