@@ -5,6 +5,10 @@ Demo
 -
 ![](https://github.com/eric-clayton/aim-trainer/blob/main/Demo.gif)
 
+Difficulty Demo
+-
+![](https://github.com/eric-clayton/aim-trainer/blob/main/DifficultyDemo.gif)
+
 Credits
 -
 Music: Threshold by Michael Grubb
