@@ -1,5 +1,6 @@
 # aim-trainer
-Simple 2d aim trainer made in godot 4
+Simple 2d aim trainer made in godot 4. 
+Playable version here: https://arcchae.itch.io/aim-trainer
 
 Demo
 -
